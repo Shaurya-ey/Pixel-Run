@@ -1,3 +1,66 @@
 [gd_scene format=3 uid="uid://dl6rs0l8yjpvr"]
 
+[ext_resource type="Texture2D" uid="uid://ciiuv7h8a8u0s" path="res://level page.png" id="1_3mivm"]
+[ext_resource type="Texture2D" uid="uid://uwmq008qvn6l" path="res://tile_0044.png" id="2_lwxgr"]
+[ext_resource type="Script" uid="uid://d3wqdu5k4pnew" path="res://timer_screen.gd" id="3_8wodn"]
+
 [node name="level_scene" type="Node2D" unique_id=898522719]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1597926272]
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("1_3mivm")
+
+[node name="HeartContainer" type="HBoxContainer" parent="TextureRect" unique_id=2031898212]
+layout_mode = 0
+offset_left = 351.0
+offset_top = 202.0
+offset_right = 816.0
+offset_bottom = 283.0
+
+[node name="Heart" type="TextureRect" parent="TextureRect/HeartContainer" unique_id=150564797]
+layout_mode = 2
+texture = ExtResource("2_lwxgr")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="TextureRect/HeartContainer" unique_id=1406858493]
+layout_mode = 2
+texture = ExtResource("2_lwxgr")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="TextureRect/HeartContainer" unique_id=563550116]
+layout_mode = 2
+texture = ExtResource("2_lwxgr")
+expand_mode = 2
+
+[node name="Heart4" type="TextureRect" parent="TextureRect/HeartContainer" unique_id=1754051229]
+layout_mode = 2
+texture = ExtResource("2_lwxgr")
+expand_mode = 2
+
+[node name="Heart5" type="TextureRect" parent="TextureRect/HeartContainer" unique_id=600208620]
+layout_mode = 2
+texture = ExtResource("2_lwxgr")
+expand_mode = 2
+
+[node name="Timer" type="RichTextLabel" parent="." unique_id=318331812]
+offset_left = 528.0
+offset_top = 432.0
+offset_right = 657.0
+offset_bottom = 510.0
+theme_override_colors/default_color = Color(0.08701607, 0.08701607, 0.08701607, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "0.0"
+script = ExtResource("3_8wodn")
+
+[node name="Level" type="RichTextLabel" parent="." unique_id=1864613931]
+offset_left = 485.0
+offset_top = 280.0
+offset_right = 684.0
+offset_bottom = 349.0
+theme_override_colors/default_color = Color(0.029506557, 0.029506557, 0.029506557, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 50
+theme_override_font_sizes/bold_font_size = 30
+text = "Level #
+"
