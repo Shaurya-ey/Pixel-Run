@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dehsvsgqm1btr"]
+
+[ext_resource type="Script" uid="uid://b8xg4nhl6r00h" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://cp8soqap13iqn" path="res://mario sprinting2.png" id="2_i3pqv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_47ks3"]
+radius = 66.007576
+
+[node name="Player" type="CharacterBody2D" unique_id=1313881456]
+script = ExtResource("1_onrkg")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1361319069]
+position = Vector2(396.75, 314.25003)
+scale = Vector2(5.031252, 4.1093745)
+texture = ExtResource("2_i3pqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1484553178]
+position = Vector2(397, 329)
+shape = SubResource("CircleShape2D_47ks3")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=2102539262]
+position = Vector2(397, 329)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=470982516]
+shape = SubResource("CircleShape2D_47ks3")
