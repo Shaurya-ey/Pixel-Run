@@ -3,9 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://ciiuv7h8a8u0s" path="res://level page.png" id="1_3mivm"]
 [ext_resource type="Texture2D" uid="uid://uwmq008qvn6l" path="res://tile_0044.png" id="2_lwxgr"]
 [ext_resource type="Script" uid="uid://d3wqdu5k4pnew" path="res://timer_screen.gd" id="3_8wodn"]
-[ext_resource type="Script" uid="uid://b5uab651edld2" path="res://timer.gd" id="4_lwxgr"]
 
 [node name="level_scene" type="Node2D" unique_id=898522719]
+script = ExtResource("3_8wodn")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1597926272]
 offset_right = 1152.0
@@ -52,7 +52,6 @@ offset_bottom = 510.0
 theme_override_colors/default_color = Color(0.08701607, 0.08701607, 0.08701607, 1)
 theme_override_font_sizes/normal_font_size = 40
 text = "0.0"
-script = ExtResource("3_8wodn")
 
 [node name="Level" type="RichTextLabel" parent="." unique_id=1864613931]
 offset_left = 485.0
@@ -65,8 +64,3 @@ theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 30
 text = "Level #
 "
-
-[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=309637589]
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("4_lwxgr")
