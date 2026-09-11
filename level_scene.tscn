@@ -49,7 +49,7 @@ offset_left = 528.0
 offset_top = 432.0
 offset_right = 657.0
 offset_bottom = 510.0
-theme_override_colors/default_color = Color(0.08701607, 0.08701607, 0.08701607, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 text = "0.0"
 
@@ -58,9 +58,8 @@ offset_left = 485.0
 offset_top = 280.0
 offset_right = 684.0
 offset_bottom = 349.0
-theme_override_colors/default_color = Color(0.029506557, 0.029506557, 0.029506557, 1)
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 50
 theme_override_font_sizes/bold_font_size = 30
-text = "Level #
-"
+text = "Level #"

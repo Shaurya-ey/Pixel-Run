@@ -18,9 +18,10 @@ func _process(_delta: float) -> void:
 
 func Timer(start_time: float) -> void:
 	time = start_time
-	while time > 0.0:
+	while time > 0.05:
 		await wait(0.1)
 		time = max(0.0, time - 0.1)
+	time = 0.0
 
 
 func _Timer(start_time: float) -> void:

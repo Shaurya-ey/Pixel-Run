@@ -218,6 +218,7 @@ offset_left = 526.0
 offset_top = 20.0
 offset_right = 650.0
 offset_bottom = 80.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/normal_font_size = 40
 text = "10.0"
 
