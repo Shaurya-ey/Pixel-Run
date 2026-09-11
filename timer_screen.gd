@@ -1,6 +1,5 @@
 extends Node2D
 
-@onready var heart_container: HBoxContainer = $TextureRect/HeartContainer
 @onready var heart: TextureRect = $TextureRect/HeartContainer/Heart
 @onready var heart_2: TextureRect = $TextureRect/HeartContainer/Heart2
 @onready var heart_3: TextureRect = $TextureRect/HeartContainer/Heart3
@@ -13,6 +12,8 @@ var time: float = 2.0
 
 
 func _ready() -> void:
+	update_hearts()
+
 	if Global.lives <= 0:
 		level.text = "GAME OVER"
 		timer.text = "0.0"
@@ -20,7 +21,7 @@ func _ready() -> void:
 		get_tree().change_scene_to_file("res://Scenes/title_scenes.tscn")
 		return
 
-	await Timer(2.0)
+	await count_down(2.0)
 
 	var next_minigame: int = Global.minigames_done + 1
 	var next_scene_path: String = "res://minigame_" + str(next_minigame) + ".tscn"
@@ -29,42 +30,23 @@ func _ready() -> void:
 		Global.minigames_done = next_minigame
 		get_tree().change_scene_to_file(next_scene_path)
 	else:
-		# If next minigame doesn't exist yet or all minigames are completed, return to Main Menu
 		get_tree().change_scene_to_file("res://Scenes/title_scenes.tscn")
 
 
 func _process(_delta: float) -> void:
-	match Global.lives:
-		5:
-			pass
-		4:
-			heart.hide()
-		3:
-			heart.hide()
-			heart_2.hide()
-		2:
-			heart.hide()
-			heart_2.hide()
-			heart_3.hide()
-		1:
-			heart.hide()
-			heart_2.hide()
-			heart_3.hide()
-			heart_4.hide()
-		_:
-			heart_container.hide()
-
 	timer.text = "%.1f" % max(0.0, time)
 	level.text = "Level " + str(Global.minigames_done + 1)
 
 
-func Timer(start_time: float) -> void:
+func update_hearts() -> void:
+	var hearts = [heart, heart_2, heart_3, heart_4, heart_5]
+	for i in range(hearts.size()):
+		hearts[i].visible = (i < Global.lives)
+
+
+func count_down(start_time: float) -> void:
 	time = start_time
-	while time > 0.05:
-		await wait(0.1)
+	while time > 0.0:
+		await get_tree().create_timer(0.1).timeout
 		time = max(0.0, time - 0.1)
 	time = 0.0
-
-
-func wait(seconds: float) -> void:
-	await get_tree().create_timer(seconds).timeout

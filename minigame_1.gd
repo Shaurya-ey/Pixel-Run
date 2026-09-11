@@ -3,7 +3,7 @@ extends Node2D
 @onready var themed_timer: Node2D = $ThemedTimer
 @onready var status_label: Label = $StatusLabel
 
-var garlic_collected: int = 0
+var coins_collected: int = 0
 var completed: bool = false
 const TOTAL_COINS: int = 3
 
@@ -11,7 +11,7 @@ const TOTAL_COINS: int = 3
 func _ready() -> void:
 	if status_label:
 		status_label.text = ""
-	await themed_timer.Timer(10.0)
+	await themed_timer.start_timer(10.0)
 	if not completed:
 		_on_timeout()
 
@@ -20,18 +20,14 @@ func _on_coin_collected() -> void:
 	if completed:
 		return
 
-	garlic_collected += 1
-	if garlic_collected >= TOTAL_COINS:
+	coins_collected += 1
+	if coins_collected >= TOTAL_COINS:
 		_on_cleared()
-
-
-func garlic_collect() -> void:
-	_on_coin_collected()
 
 
 func _on_cleared() -> void:
 	completed = true
-	themed_timer.stop()
+	themed_timer.stop_timer()
 	if status_label:
 		status_label.text = "CLEARED!"
 	await get_tree().create_timer(1.5).timeout

@@ -1,13 +1,9 @@
 extends Node2D
 
-@onready var timer: RichTextLabel = get_node_or_null("Timer") if get_node_or_null("Timer") else get_node_or_null("timer")
+@onready var timer_label: RichTextLabel = get_node_or_null("Timer")
 
 var time: float = 10.0
 var is_running: bool = false
-
-
-func _ready() -> void:
-	pass
 
 
 func _process(delta: float) -> void:
@@ -17,11 +13,11 @@ func _process(delta: float) -> void:
 			is_running = false
 			time = 0.0
 
-	if timer:
-		timer.text = "%.1f" % max(0.0, time)
+	if timer_label:
+		timer_label.text = "%.1f" % max(0.0, time)
 
 
-func Timer(start_time: float) -> void:
+func start_timer(start_time: float = 10.0) -> void:
 	time = start_time
 	is_running = true
 	while time > 0.0 and is_running:
@@ -29,9 +25,14 @@ func Timer(start_time: float) -> void:
 	is_running = false
 
 
-func stop() -> void:
+func stop_timer() -> void:
 	is_running = false
 
 
-func _Timer(start_time: float) -> void:
-	await Timer(start_time)
+# Aliases for backward compatibility
+func Timer(start_time: float) -> void:
+	await start_timer(start_time)
+
+
+func stop() -> void:
+	stop_timer()

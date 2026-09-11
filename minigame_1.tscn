@@ -297,4 +297,3 @@ vertical_alignment = 1
 [connection signal="coin_collected" from="Coin1" to="." method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coin2" to="." method="_on_coin_collected"]
 [connection signal="coin_collected" from="Coin3" to="." method="_on_coin_collected"]
-
