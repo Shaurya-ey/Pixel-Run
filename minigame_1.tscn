@@ -16,10 +16,16 @@ size = Vector2(410.5, 90.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rtfw5"]
 size = Vector2(400, 135)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_noppg"]
+size = Vector2(401, 43.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_465ho"]
+size = Vector2(228, 42)
+
 [node name="minigame_1" type="Node2D" unique_id=1497428501]
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1935989502]
-repeat_size = Vector2(1000, 0)
+repeat_size = Vector2(800, 0)
 autoscroll = Vector2(100, 0)
 
 [node name="TextureRect" type="TextureRect" parent="Parallax2D" unique_id=1710788983]
@@ -66,6 +72,18 @@ shape = SubResource("RectangleShape2D_kikrc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Platform4" unique_id=1247034681]
 position = Vector2(809, 558.5)
 shape = SubResource("RectangleShape2D_rtfw5")
+
+[node name="Platform6" type="StaticBody2D" parent="." unique_id=720319749]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform6" unique_id=695793418]
+position = Vector2(264, 407.125)
+shape = SubResource("RectangleShape2D_noppg")
+
+[node name="Platform7" type="StaticBody2D" parent="." unique_id=45708729]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform7" unique_id=1820932726]
+position = Vector2(426, 257)
+shape = SubResource("RectangleShape2D_465ho")
 
 [node name="Player" parent="." unique_id=1313881456 instance=ExtResource("2_gi7k6")]
 position = Vector2(-293, 199)
