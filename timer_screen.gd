@@ -14,6 +14,9 @@ var time: float = 2.0
 
 func _ready() -> void:
 	if Global.lives <= 0:
+		level.text = "GAME OVER"
+		timer.text = "0.0"
+		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://Scenes/title_scenes.tscn")
 		return
 
