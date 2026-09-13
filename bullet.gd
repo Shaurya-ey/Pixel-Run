@@ -1,17 +1,17 @@
 extends Area2D
 
-var speed = 800
+var speed: float = 800.0
 
-func _ready():
-	area_entered.connect(_on_area_entered)
 
-func _physics_process(delta):
+func _physics_process(delta: float) -> void:
 	position.y -= speed * delta
-	# clean up once it flies off screen
-	if position.y < -50:
-		queue_free()
 
-func _on_area_entered(area):
-	if area.is_in_group("enemy"):
-		area.queue_free()
+	if position.y < -50.0:
 		queue_free()
+		return
+
+	for enemy in get_tree().get_nodes_in_group("enemy"):
+		if global_position.distance_to(enemy.global_position) < 60.0:
+			enemy.queue_free()
+			queue_free()
+			break

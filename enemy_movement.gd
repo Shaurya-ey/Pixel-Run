@@ -1,19 +1,20 @@
 extends Node2D
 
-var move_speed = 120
-var drop_amount = 40
-var current_dir = 1
-var edge_buffer = 40
-var screen_w = 1152
+var move_speed: float = 120.0
+var drop_amount: float = 40.0
+var current_dir: int = 1
+var edge_buffer: float = 40.0
+var screen_w: float = 1152.0
 
-func _physics_process(delta):
-	var should_drop = false
-	var min_x = 99999
-	var max_x = -99999
 
-	for e in get_children():
-		if e is Area2D:
-			var ex = e.global_position.x
+func _physics_process(delta: float) -> void:
+	var should_drop := false
+	var min_x := 99999.0
+	var max_x := -99999.0
+
+	for enemy in get_children():
+		if enemy is Area2D:
+			var ex: float = enemy.global_position.x
 			if ex < min_x:
 				min_x = ex
 			if ex > max_x:
@@ -26,16 +27,16 @@ func _physics_process(delta):
 		current_dir = 1
 		should_drop = true
 
-	for e in get_children():
-		if e is Area2D:
-			e.position.x += current_dir * move_speed * delta
+	for enemy in get_children():
+		if enemy is Area2D:
+			enemy.position.x += current_dir * move_speed * delta
 
 	if should_drop:
-		for e in get_children():
-			if e is Area2D:
-				e.position.y += drop_amount
+		for enemy in get_children():
+			if enemy is Area2D:
+				enemy.position.y += drop_amount
 
-	for e in get_children():
-		if e is Area2D and e.global_position.y >= 500:
+	for enemy in get_children():
+		if enemy is Area2D and enemy.global_position.y >= 500.0:
 			get_tree().call_group("game_manager", "_on_enemies_reached_bottom")
 			break
