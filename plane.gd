@@ -1,32 +1,31 @@
 extends CharacterBody2D
 
-const SPEED = 400.0
-const BULLET_COOLDOWN = 0.3  # seconds between shots
+var speed = 400
+var shoot_cooldown = 0.3
 
-@onready var sprite_2d: Sprite2D = $Sprite2D
-@onready var bullet_spawn: Marker2D = $BulletSpawn  # where bullets appear
-@onready var cooldown_timer: Timer = $CooldownTimer
+@onready var sprite_2d = $Sprite2D
+@onready var bullet_spawn = $BulletSpawn
+@onready var cooldown_timer = $CooldownTimer
 
-var bullet_scene = preload("res://bullet.tscn")  # adjust path if yours differs
+var bullet_scene = preload("res://bullet.tscn")
 
 func _ready():
-	cooldown_timer.wait_time = BULLET_COOLDOWN
+	cooldown_timer.wait_time = shoot_cooldown
 	cooldown_timer.one_shot = true
 
-func _physics_process(_delta: float) -> void:
-	# Movement
-	var direction := Input.get_axis("ui_left", "ui_right")
-	velocity.x = direction * SPEED
-	velocity.y = 0.0
+func _physics_process(delta):
+	# move left and right
+	var direction = Input.get_axis("ui_left", "ui_right")
+	velocity.x = direction * speed
 	move_and_slide()
 
-	# Flip sprite
+	# flip the sprite so it faces where we're going
 	if direction > 0:
-			sprite_2d.flip_h = false
+		sprite_2d.flip_h = false
 	elif direction < 0:
 		sprite_2d.flip_h = true
 
-	  # Shoot
+	# shoot if we press the button and the cooldown is over
 	if Input.is_action_just_pressed("ui_accept") and cooldown_timer.is_stopped():
 		shoot()
 

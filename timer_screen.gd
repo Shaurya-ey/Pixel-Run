@@ -1,39 +1,33 @@
 extends Node2D
 
-@onready var heart: TextureRect = $TextureRect/HeartContainer/Heart
-@onready var heart_2: TextureRect = $TextureRect/HeartContainer/Heart2
-@onready var heart_3: TextureRect = $TextureRect/HeartContainer/Heart3
-@onready var heart_4: TextureRect = $TextureRect/HeartContainer/Heart4
-@onready var heart_5: TextureRect = $TextureRect/HeartContainer/Heart5
-@onready var level: RichTextLabel = $Level
-@onready var timer: RichTextLabel = $Timer
+@onready var heart = $TextureRect/HeartContainer/Heart
+@onready var heart_2 = $TextureRect/HeartContainer/Heart2
+@onready var heart_3 = $TextureRect/HeartContainer/Heart3
+@onready var heart_4 = $TextureRect/HeartContainer/Heart4
+@onready var heart_5 = $TextureRect/HeartContainer/Heart5
+@onready var level = $Level
+@onready var timer = $Timer
 
-var time: float = 2.0
+var time = 2.0
 
-
-func _ready() -> void:
+func _ready():
 	update_hearts()
-
 	if Global.lives <= 0:
 		level.text = "GAME OVER"
 		timer.text = "0.0"
 		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://Scenes/title_scenes.tscn")
 		return
-
 	await count_down(2.0)
-
-	var next_minigame: int = Global.minigames_done + 1
-	var next_scene_path: String = "res://minigame_" + str(next_minigame) + ".tscn"
-
+	var next_minigame = Global.minigames_done + 1
+	var next_scene_path = "res://minigame_" + str(next_minigame) + ".tscn"
 	if Global.minigames_done < 3 and ResourceLoader.exists(next_scene_path):
 		Global.minigames_done = next_minigame
 		get_tree().change_scene_to_file(next_scene_path)
 	else:
 		get_tree().change_scene_to_file("res://Scenes/title_scenes.tscn")
 
-
-func _process(_delta: float) -> void:
+func _process(delta):
 	timer.text = "%.1f" % max(0.0, time)
 	if Global.minigames_done == 0:
 		level.text = "Mario"
@@ -42,14 +36,12 @@ func _process(_delta: float) -> void:
 	else:
 		level.text = "Mario"
 
-
-func update_hearts() -> void:
+func update_hearts():
 	var hearts = [heart, heart_2, heart_3, heart_4, heart_5]
 	for i in range(hearts.size()):
 		hearts[i].visible = (i < Global.lives)
 
-
-func count_down(start_time: float) -> void:
+func count_down(start_time):
 	time = start_time
 	while time > 0.0:
 		await get_tree().create_timer(0.1).timeout

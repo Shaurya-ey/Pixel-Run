@@ -6,6 +6,8 @@
 size = Vector2(188, 188)
 
 [node name="enemy" type="Area2D" unique_id=1264065257]
+collision_layer = 4
+collision_mask = 2
 groups = ["enemy"]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=383559720]
