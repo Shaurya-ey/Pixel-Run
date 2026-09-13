@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dlk17ny85caav"]
+
+[ext_resource type="Texture2D" uid="uid://dmh04agh1pf2b" path="res://Scenes/istockphoto-1403514917-612x612.jpg" id="1_ksr4o"]
+
+[node name="minigame_2" type="Node" unique_id=528324114]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=771747824]
+offset_right = 1153.0
+offset_bottom = 647.0
+texture = ExtResource("1_ksr4o")

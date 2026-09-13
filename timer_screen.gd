@@ -35,7 +35,10 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	timer.text = "%.1f" % max(0.0, time)
-	level.text = "Level " + str(Global.minigames_done + 1)
+	if Global.minigames_done == 1:
+		level.text = "next game "
+	else:
+		level.text = "Mario "
 
 
 func update_hearts() -> void:
