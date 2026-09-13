@@ -3,23 +3,34 @@ extends Node2D
 @onready var themed_timer: Node2D = $ThemedTimer
 @onready var status_label: Label = $StatusLabel
 
-var coins_collected: int = 0
 var completed: bool = false
-const TOTAL_COINS: int = 3
+var total_enemies: int = 0
+var enemies_alive: int = 0
 
 
 func _ready() -> void:
 	status_label.text = ""
-	await themed_timer.start_timer(8.0)
+
+	# Count enemies at start
+	var enemy_container = $Enemies
+	total_enemies = enemy_container.get_child_count()
+	enemies_alive = total_enemies
+
+	# Connect enemy signals
+	for enemy in enemy_container.get_children():
+		enemy.tree_exited.connect(_on_enemy_destroyed)
+
+	# Start the countdown
+	await themed_timer.start_timer(15.0)
 	if not completed:
 		_on_timeout()
 
 
-func _on_coin_collected() -> void:
+func _on_enemy_destroyed() -> void:
 	if completed:
 		return
-	coins_collected += 1
-	if coins_collected >= TOTAL_COINS:
+	enemies_alive -= 1
+	if enemies_alive <= 0:
 		_on_cleared()
 
 

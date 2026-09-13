@@ -1,26 +1,24 @@
 [gd_scene format=3 uid="uid://dwbj0ve8yaws0"]
 
+[ext_resource type="Script" uid="uid://bbu5l2yagfo4v" path="res://plane.gd" id="1_0e48y"]
 [ext_resource type="Texture2D" uid="uid://dfq48dtj57nqu" path="res://Scenes/livingtheindie_pixelart_ship_tutorial.png" id="1_wtcfe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_47ks3"]
 size = Vector2(188, 188)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ohxd2"]
-size = Vector2(188, 188)
-
 [node name="plane" type="CharacterBody2D" unique_id=1264065257]
+script = ExtResource("1_0e48y")
+
+[node name="BulletSpawn" type="Marker2D" parent="." unique_id=289973043]
+position = Vector2(0, -50)
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=383559720]
-position = Vector2(440.5, 353.5)
-scale = Vector2(3.4629629, 3.6111112)
+position = Vector2(0, 0)
+scale = Vector2(3.481481, 3.5185187)
 texture = ExtResource("1_wtcfe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=657638830]
-position = Vector2(444, 357)
+position = Vector2(0, 0)
 shape = SubResource("RectangleShape2D_47ks3")
 
-[node name="Area2D" type="Area2D" parent="." unique_id=696133689]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=370722648]
-position = Vector2(444, 357)
-shape = SubResource("RectangleShape2D_ohxd2")
+[node name="CooldownTimer" type="Timer" parent="." unique_id=1440580534]

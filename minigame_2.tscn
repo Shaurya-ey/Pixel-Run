@@ -1,10 +1,85 @@
 [gd_scene format=3 uid="uid://dlk17ny85caav"]
 
 [ext_resource type="Texture2D" uid="uid://dmh04agh1pf2b" path="res://Scenes/istockphoto-1403514917-612x612.jpg" id="1_ksr4o"]
+[ext_resource type="PackedScene" uid="uid://dwbj0ve8yaws0" path="res://node_2d.tscn" id="2_vdqgs"]
+[ext_resource type="Script" uid="uid://b5uab651edld2" path="res://timer.gd" id="3_2425y"]
+[ext_resource type="PackedScene" uid="uid://duw8nuom24rjg" path="res://enemy.tscn" id="4_5x31c"]
+[ext_resource type="Script" uid="uid://ocdnnwfb3d4i" path="res://minigame_2.gd" id="6_minigame2_script"]
 
-[node name="minigame_2" type="Node" unique_id=528324114]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_47ks3"]
+size = Vector2(188, 188)
+
+[node name="minigame_2" type="Node2D"]
+script = ExtResource("6_minigame2_script")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=771747824]
-offset_right = 1153.0
-offset_bottom = 647.0
+offset_left = -14.0
+offset_top = -9.0
+offset_right = 1160.0
+offset_bottom = 652.0
 texture = ExtResource("1_ksr4o")
+
+[node name="ThemedTimer" type="Node2D" parent="."]
+script = ExtResource("3_2425y")
+
+[node name="Timer" type="RichTextLabel" parent="ThemedTimer" unique_id=395970521]
+offset_left = 526.0
+offset_top = 20.0
+offset_right = 650.0
+offset_bottom = 80.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 40
+text = "15.0"
+
+[node name="StatusLabel" type="Label" parent="."]
+offset_left = 276.0
+offset_top = 260.0
+offset_right = 876.0
+offset_bottom = 380.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 12
+theme_override_font_sizes/font_size = 64
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="plane" parent="." instance=ExtResource("2_vdqgs")]
+position = Vector2(576, 550)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy1" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(200, 80)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(350, 80)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(500, 80)
+
+[node name="Enemy4" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(650, 80)
+
+[node name="Enemy5" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(800, 80)
+
+[node name="Enemy6" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(275, 180)
+
+[node name="Enemy7" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(425, 180)
+
+[node name="Enemy8" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(575, 180)
+
+[node name="Enemy9" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(725, 180)
+
+[node name="Enemy10" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(350, 280)
+
+[node name="Enemy11" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(500, 280)
+
+[node name="Enemy12" parent="Enemies" instance=ExtResource("4_5x31c")]
+position = Vector2(650, 280)
